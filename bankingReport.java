@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class bankingReport{
+public class bankingreport{
 
 private String firstName;
 private String lastName;
@@ -18,7 +18,7 @@ private int lastNameCounter;
 String inputUserName;
 String inputPassword;
 
-public bankingReport(){
+public bankingreport(){
 }
 
     public void printReport() {
