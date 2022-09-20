@@ -45,7 +45,7 @@ public class options {
         }
             
         public void previousTransaction(){
-            var obj = new bankingReport();
+            var obj = new bankingreport();
             if(decider == 1){
                 obj.getDisplay();
                 balanceCurrency = NumberFormat.getCurrencyInstance().format(tracker);
