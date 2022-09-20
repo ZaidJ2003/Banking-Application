@@ -1,14 +1,14 @@
 import java.text.NumberFormat;
 import java.util.Scanner;
 
-public class options {
+public class Options {
     private int balance;
     private Scanner scanner = new Scanner(System.in);
     private String balanceCurrency;
     private int tracker;
     private int decider;
 
-    public options(){
+    public Options(){
     }
     
         public void checkBalance(){
@@ -45,7 +45,7 @@ public class options {
         }
             
         public void previousTransaction(){
-            var obj = new bankingreport();
+            var obj = new BankingReport();
             if(decider == 1){
                 obj.getDisplay();
                 balanceCurrency = NumberFormat.getCurrencyInstance().format(tracker);
