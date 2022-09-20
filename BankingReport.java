@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-public class bankingreport{
+public class BankingReport {
 
 private String firstName;
 private String lastName;
 private String password;
 private String userName;
 private Scanner scanner = new Scanner(System.in);
-private options check = new options();
+private Options check = new Options();
 private int account = 0; 
 private String[] usernames = new String[2]; 
 private String[] passwords = new String[2]; 
@@ -18,7 +18,7 @@ private int lastNameCounter;
 String inputUserName;
 String inputPassword;
 
-public bankingreport(){
+public BankingReport(){
 }
 
     public void printReport() {
@@ -178,4 +178,5 @@ public bankingreport(){
     return lastName.charAt(0);
     }
 }
+
 
