@@ -15,17 +15,17 @@ private String[] firstnames = new String[2];
 private String[] lastnames = new String[2];
 private int firstNameCounter;
 private int lastNameCounter;
-String inputUserName;
-String inputPassword;
+private String inputUserName;
+private String inputPassword;
 
 public BankingReport(){
 }
 
     public void printReport() {
         getDisplay();
-        System.out.println("Welcome to ZJ bank!");
+        System.out.println("Welcome to Capital bank!");
         getDisplay();
-        for(int i = 0; i < account + 1; i++){
+        for(int i = 0; i < account + 2; i++){
             verification();
         }
     }
@@ -75,7 +75,12 @@ public BankingReport(){
                 break;
             }
             else if(toLowerCase == 'b'){
-                createAnAccount();
+                try{
+                    createAnAccount();
+                }
+                catch(ArrayIndexOutOfBoundsException e){
+                    System.out.println("You are only allowed to create 2 accounts per visit. Sorry for the incovenience.");
+                }
                 break;
             }
             else{
@@ -117,7 +122,12 @@ public BankingReport(){
                         char upperCase = Character.toUpperCase(response);
                         scanner.nextLine();
                             if(upperCase == 'B'){
-                                createAnAccount();
+                                try{
+                                    createAnAccount();
+                                }
+                                catch(ArrayIndexOutOfBoundsException e){
+                                    System.out.println("You are only allowed to create 2 accounts per visit. Sorry for the incovenience.");
+                                }
                                 break loop1;
                             }
                             else if(upperCase == 'A'){
@@ -134,28 +144,31 @@ public BankingReport(){
     }
 
     private void createAnAccount() {
-        System.out.println("Enter your first name");
-        firstName = scanner.nextLine();
-        firstnames[firstNameCounter] = firstName;
-        System.out.println("Enter your last name");
-        lastName = scanner.nextLine();
-        lastnames[lastNameCounter] = lastName;
-        System.out.println("Create a username");
-        userName = scanner.nextLine();
-        usernames[account] = userName; 
-            while(true){
-                System.out.println("Create a password");
-                password = scanner.nextLine();
-                    if(password.length() >= 8){
-                        passwords[account] = password; 
-                        break;
-                    }
-                    else{
-                        System.out.println("password must be at least 8 characters.\n");
-                    }
-            }
-        System.out.println("Account Successfully created!\n");
-        account++; firstNameCounter++; lastNameCounter++;
+        if(account > 2){
+            throw new ArrayIndexOutOfBoundsException();
+        }
+            System.out.println("Enter your first name");
+            firstName = scanner.nextLine();
+            firstnames[firstNameCounter] = firstName;
+            System.out.println("Enter your last name");
+            lastName = scanner.nextLine();
+            lastnames[lastNameCounter] = lastName;
+            System.out.println("Create a username");
+            userName = scanner.nextLine();
+            usernames[account] = userName; 
+                while(true){
+                    System.out.println("Create a password");
+                    password = scanner.nextLine();
+                        if(password.length() >= 8){
+                            passwords[account] = password; 
+                            break;
+                        }
+                        else{
+                            System.out.println("password must be at least 8 characters.\n");
+                        }
+                }
+            System.out.println("Account Successfully created!\n");
+            account++; firstNameCounter++; lastNameCounter++;
     }
 
     private void getMenuDisplay() {
@@ -164,7 +177,9 @@ public BankingReport(){
 
     private String getFirstName(){
         for(int i =0; i<usernames.length; i++){
-            if(inputUserName.equals(usernames[i]))
+            if(inputUserName == null);
+
+            else if(inputUserName.equals(usernames[i]))
                 firstName = firstnames[i];
         }   
     return firstName;
@@ -172,11 +187,15 @@ public BankingReport(){
 
     private char getLastName(){
         for(int i =0; i<passwords.length; i++){
-            if(inputPassword.equals(passwords[i]))
+            if(inputPassword == null);
+
+            else if(inputPassword.equals(passwords[i]))
             lastName = lastnames[i];
         }   
     return lastName.charAt(0);
     }
 }
+
+
 
 
